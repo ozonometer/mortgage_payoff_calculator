@@ -21,6 +21,7 @@ public class Main {
         double totalInterest = 0.0;
         double totalEscrow = 0.0;
         int month = 0;
+        int years = 0;
 
 	while (remainingBal > 0) {
         month++;
@@ -33,14 +34,19 @@ public class Main {
 	    totalPaid = totalPaid + MIN_MONTHLY_PAYMENT + ADDITIONAL_MONTHLY_PAYMENT;
         System.out.println("Month "+ month +": Principal: $" + df.format(principal) + " Interest: $" + df.format(interest) +
                 " Remaining balance: $"+ df.format(remainingBal));
+
+        if (month % 12 == 0) {
+            years++;
+            System.out.println("--- Remaining balance after year " +years+ " will be $"+df.format(remainingBal));
+        }
     }
 
 	totalPaid = totalPaid + remainingBal; // if last month balance is negative
-        double years = month / 12.0;
+        int remainingMonths = month - (years * 12);
         System.out.println();
         System.out.println("With monthly payment $" + MIN_MONTHLY_PAYMENT + " + additional monthly payment of $" +
                 ADDITIONAL_MONTHLY_PAYMENT);
-        System.out.println("It will take " + month + " month or " + df.format(years)+ " years to pay off $" + BALANCE +
+        System.out.println("It will take " + month + " month or " + years + " years and " + remainingMonths + " months to pay off $" + BALANCE +
                 " balance.");
         System.out.println("Total payment will be $" + df.format(totalPaid));
         System.out.println("Total interest paid $" + df.format(totalInterest));
