@@ -2,6 +2,10 @@ package com.company;
 
 import java.text.DecimalFormat;
 
+/** Mykola Gutsaliuk
+ * 11/15/2020
+ * Calculates mortgage payoff time and cost depending on variables.
+ */
 public class Main {
     final static double BALANCE = 138878.69; // loan balance
     final static double IR = 0.0375; // 3.75%
