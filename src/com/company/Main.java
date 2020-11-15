@@ -24,8 +24,8 @@ public class Main {
 	    remainingBal = remainingBal - principal;
 	    totalEscrow = totalEscrow + ESCROW;
 	    totalPaid = totalPaid + MIN_MONTHLY_PAYMENT + ADDITIONAL_MONTHLY_PAYMENT;
-        System.out.println("Month "+ month +": Principal:" + df.format(principal) + " Interest: " + df.format(interest) +
-                "Remaining balance: "+ df.format(remainingBal));
+        System.out.println("Month "+ month +": Principal: $" + df.format(principal) + " Interest: $" + df.format(interest) +
+                " Remaining balance: $"+ df.format(remainingBal));
 
     }
 	totalPaid = totalPaid + remainingBal; // if last month balance is negative
