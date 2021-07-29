@@ -7,7 +7,7 @@ import java.text.DecimalFormat;
  * Calculates mortgage payoff time and cost depending on variables.
  */
 public class Main {
-    final static double BALANCE = 138878.69; // loan balance
+    final static double BALANCE = 138878.69; // loan balance 138878.69
     final static double IR = 0.0375; // 3.75% annual interest rate
     final static double ESCROW = 421.06; // monthly escrow amount
     final static double MIN_MONTHLY_PAYMENT = 1129.63; // minimum monthly payment
