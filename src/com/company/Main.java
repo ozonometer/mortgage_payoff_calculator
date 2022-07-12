@@ -21,6 +21,7 @@ public class Main {
         LocalDate currentdate = LocalDate.now();
         Month currentMonth = currentdate.getMonth();
         int currentYear = currentdate.getYear();
+        System.out.println("Today is " + currentdate);
 
         double remainingBal = BALANCE;
         double totalPaid = 0.0;
@@ -39,19 +40,24 @@ public class Main {
         totalInterest = totalInterest + interest;
 	    totalEscrow = totalEscrow + ESCROW;
 	    totalPaid = totalPaid + MIN_MONTHLY_PAYMENT + ADDITIONAL_MONTHLY_PAYMENT;
-        System.out.println("Month " + month + ":" + currentMonth +" " + currentYear + ", Principal: $" + df.format(principal) + " Interest: $" + df.format(interest) +
+        System.out.println(currentMonth +" " + currentYear + " (Month " + month + "), Principal: $" + df.format(principal) + " Interest: $" + df.format(interest) +
                 " Remaining balance: $"+ df.format(remainingBal));
 
+        // calendar year count
+        if (currentMonth.getValue() == 12) {
+            currentYear = currentYear + 1;
+        }
+        // year from today count
         if (month % 12 == 0) {
             years++;
-            currentYear = currentYear + 1;
-            System.out.println("--- Remaining balance after year " +years+ " ("+ currentYear +") will be $"+df.format(remainingBal));
+            System.out.println("--- Remaining balance after year " +years+ " ("+ currentYear +" " + currentMonth + ") will be $"+df.format(remainingBal));
         }
     }
 
 	totalPaid = totalPaid + remainingBal; // if last month balance is negative
         int remainingMonths = month - (years * 12);
         System.out.println();
+        System.out.println("Loan will be paid off in " + currentMonth + " " + currentYear);
         System.out.println("With monthly payment $" + MIN_MONTHLY_PAYMENT + " + additional monthly payment of $" +
                 ADDITIONAL_MONTHLY_PAYMENT);
         System.out.println("It will take " + month + " month or " + years + " years and " + remainingMonths + " months to pay off $" + BALANCE +
@@ -59,7 +65,6 @@ public class Main {
         System.out.println("Total payment will be $" + df.format(totalPaid));
         System.out.println("Total interest paid $" + df.format(totalInterest));
         System.out.println("Total escrow paid $" + df.format(totalEscrow));
-        System.out.println("Loan will be paid off in " + currentMonth + " " + currentYear);
     }
 
     /**
