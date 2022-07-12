@@ -21,7 +21,7 @@ public class Main {
         LocalDate currentdate = LocalDate.now();
         Month currentMonth = currentdate.getMonth();
         int currentYear = currentdate.getYear();
-        System.out.println("Today is " + currentdate);
+        System.out.println("Current balance as on " + currentdate + " is " + BALANCE);
 
         double remainingBal = BALANCE;
         double totalPaid = 0.0;
