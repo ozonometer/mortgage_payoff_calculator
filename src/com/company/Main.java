@@ -1,6 +1,8 @@
 package com.company;
 
 import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.Month;
 
 /** Mykola Gutsaliuk
  * 11/15/2020
@@ -16,6 +18,10 @@ public class Main {
     final static DecimalFormat df = new DecimalFormat("0.00");
 
     public static void main(String[] args) {
+        LocalDate currentdate = LocalDate.now();
+        Month currentMonth = currentdate.getMonth();
+        int currentYear = currentdate.getYear();
+
         double remainingBal = BALANCE;
         double totalPaid = 0.0;
         double totalInterest = 0.0;
@@ -25,19 +31,21 @@ public class Main {
 
 	while (remainingBal > 0) {
         month++;
-	    double interest = calcMonthlyInterest(remainingBal);
+        currentMonth = currentMonth.plus(1);
+        double interest = calcMonthlyInterest(remainingBal);
 	    double principal = MIN_MONTHLY_PAYMENT + ADDITIONAL_MONTHLY_PAYMENT - ESCROW - interest;
 	    remainingBal = remainingBal - principal; // principal toward balance
 
         totalInterest = totalInterest + interest;
 	    totalEscrow = totalEscrow + ESCROW;
 	    totalPaid = totalPaid + MIN_MONTHLY_PAYMENT + ADDITIONAL_MONTHLY_PAYMENT;
-        System.out.println("Month "+ month +": Principal: $" + df.format(principal) + " Interest: $" + df.format(interest) +
+        System.out.println("Month " + month + ":" + currentMonth +" " + currentYear + ", Principal: $" + df.format(principal) + " Interest: $" + df.format(interest) +
                 " Remaining balance: $"+ df.format(remainingBal));
 
         if (month % 12 == 0) {
             years++;
-            System.out.println("--- Remaining balance after year " +years+ " will be $"+df.format(remainingBal));
+            currentYear = currentYear + 1;
+            System.out.println("--- Remaining balance after year " +years+ " ("+ currentYear +") will be $"+df.format(remainingBal));
         }
     }
 
@@ -51,6 +59,7 @@ public class Main {
         System.out.println("Total payment will be $" + df.format(totalPaid));
         System.out.println("Total interest paid $" + df.format(totalInterest));
         System.out.println("Total escrow paid $" + df.format(totalEscrow));
+        System.out.println("Loan will be paid off in " + currentMonth + " " + currentYear);
     }
 
     /**
