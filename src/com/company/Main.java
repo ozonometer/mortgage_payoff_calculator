@@ -40,8 +40,8 @@ public class Main {
         totalInterest = totalInterest + interest;
 	    totalEscrow = totalEscrow + ESCROW;
 	    totalPaid = totalPaid + MIN_MONTHLY_PAYMENT + ADDITIONAL_MONTHLY_PAYMENT;
-        System.out.println(currentMonth +" " + currentYear + " (Month " + month + "), Principal: $" + df.format(principal) + " Interest: $" + df.format(interest) +
-                " Remaining balance: $"+ df.format(remainingBal));
+        System.out.println("Principal: $" + df.format(principal) + " Interest: $" + df.format(interest) +
+                " Remaining balance: $"+ df.format(remainingBal) + " " + currentMonth +" " + currentYear + " (Month " + month + ")");
 
         // calendar year count
         if (currentMonth.getValue() == 12) {
