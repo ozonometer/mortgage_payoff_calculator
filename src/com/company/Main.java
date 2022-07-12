@@ -60,8 +60,8 @@ public class Main {
         System.out.println("Loan will be paid off in " + currentMonth + " " + currentYear);
         System.out.println("With monthly payment $" + MIN_MONTHLY_PAYMENT + " + additional monthly payment of $" +
                 ADDITIONAL_MONTHLY_PAYMENT);
-        System.out.println("It will take " + month + " month or " + years + " years and " + remainingMonths + " months to pay off $" + BALANCE +
-                " balance.");
+        System.out.println("It will take " + month + " month or " + years + " years and " + remainingMonths +
+                " months to pay off $" + BALANCE + " balance.");
         System.out.println("Total payment will be $" + df.format(totalPaid));
         System.out.println("Total interest paid $" + df.format(totalInterest));
         System.out.println("Total escrow paid $" + df.format(totalEscrow));
