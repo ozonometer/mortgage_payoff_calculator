@@ -30,7 +30,7 @@ public class Main {
         int month = 0;
         int years = 0;
 
-	while (remainingBal > 0) {
+	while ((Math.round(remainingBal * 100.0) / 100.0) > 0) {
         month++;
         currentMonth = currentMonth.plus(1);
         double interest = calcMonthlyInterest(remainingBal);
@@ -50,7 +50,9 @@ public class Main {
         // year from today count
         if (month % 12 == 0) {
             years++;
-            System.out.println("--- Remaining balance after year " +years+ " ("+ currentYear +" " + currentMonth + ") will be $"+df.format(remainingBal));
+            System.out.println("--- Interest paid so far " + df.format(totalInterest));
+            System.out.println("--- Remaining balance after year " +years+ " ("+ currentYear +" " + currentMonth
+                    + ") will be $"+df.format(remainingBal));
         }
     }
 
